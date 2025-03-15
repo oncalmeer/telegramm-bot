@@ -1,0 +1,109 @@
+
+       <!DOCTYPE html>
+       <html lang="ru">
+       <head>
+           <meta charset="UTF-8">
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <title>Ваш билет</title>
+           <style>
+               body {
+                   font-family: Arial, sans-serif;
+                   background-color: #f5f1e8; /* Фон полностью в цвет #f5f1e8 */
+                   color: #332A56; /* Цвет текста */
+                   margin: 0;
+                   padding: 0;
+                   display: flex;
+                   justify-content: center;
+                   align-items: center;
+                   height: 100vh;
+                   text-align: center;
+               }
+               .ticket {
+                   background-color: #f5f1e8; /* Фон билета в цвет #f5f1e8 */
+                   padding: 5px; /* Уменьшенный отступ */
+                   width: 90%;
+                   max-width: 400px;
+                   display: flex;
+                   flex-direction: column;
+                   align-items: center;
+                                      gap: 2.5px; /* Уменьшенный отступ между элементами */
+               }
+               .ticket h2 {
+                   font-size: 16px; /* Увеличенный размер шрифта для "Ваш проезд успешно оплачен!" */
+                   margin: 0 0 5px 0; /* Уменьшенный отступ */
+               }
+               .bus-info {
+                   font-size: 18px; /* Увеличенный размер шрифта для "Автобус: №39" */
+                   font-weight: bold; /* Жирность */
+                   margin: 0 0 5px 0; /* Уменьшенный отступ */
+               }
+               .price {
+                   font-size: 34px; /* Увеличенный размер шрифта для "40 ₽" */
+                   font-weight: bold; /* Жирность */
+                   margin: 0 0 10px 0; /* Уменьшенный отступ */
+               }
+               .date-time {
+                   font-size: 16px; /* Увеличенный размер шрифта для даты и времени */
+                   margin: 0 0 5px 0; /* Уменьшенный отступ */
+               }
+               .terminal {
+                   font-size: 16px; /* Увеличенный размер шрифта для "Т/К 1333" */
+                   color: #bcb7b3; /* Светло-серый цвет для "Т/К 1333" */
+                   margin: 0 0 10px 0; /* Уменьшенный отступ */
+               }
+               .elapsed-time {
+                   font-size: 16px; /* Увеличенный размер шрифта для "С момента оплаты прошло:" */
+                   margin: 0 0 5px 0; /* Уменьшенный отступ */
+               }
+               .elapsed-time-value {
+                   font-size: 24px; /* Увеличенный размер шрифта для времени */
+                   font-weight: bold; /* Жирность */
+                   margin: 0 0 10px 0; /* Уменьшенный отступ */
+               }
+               .qr-code {
+                   width: 400px; /* Увеличенный размер QR-кода */
+                   height: 400px;
+                   margin: 0 0 10px 0; /* Уменьшенный отступ */
+               }
+               .ticket-details {
+                   font-size: 16px; /* Увеличенный размер шрифта для деталей билета */
+                   margin: 0 0 5px 0; /* Уменьшенный отступ */
+               }
+               .ticket-details-bold {
+                   font-weight: bold; /* Жирность для номера билета и серии */
+               }
+           </style>
+           <noscript>
+               <meta http-equiv="refresh" content="1">
+           </noscript>
+           <script>
+               function updateElapsedTime() {
+                   const startTime = new Date("2025-03-15T16:54:46.214092");
+                   const now = new Date();
+                   const elapsed = Math.floor((now - startTime) / 1000);
+                   const hours = Math.floor(elapsed / 3600);
+                   const minutes = Math.floor((elapsed % 3600) / 60);
+                   const seconds = elapsed % 60;
+                   document.getElementById('elapsed-time').innerText = 
+                       `${String(hours).padStart(2, '0')}:${String(minutes).padStart(2, '0')}:${String(seconds).padStart(2, '0')}`;
+               }
+               setInterval(updateElapsedTime, 1000);
+               updateElapsedTime();
+           </script>
+       </head>
+       <body>
+           <div class="ticket">
+               <h2>Ваш проезд успешно оплачен!</h2>
+               <p class="bus-info">Автобус: №12</p>
+               <p class="price">40 ₽</p>
+               <p class="date-time">15.03.2025 16:54</p>
+               <p class="terminal">Т/К 1333</p>
+               <p class="elapsed-time">С момента оплаты прошло:</p>
+               <p class="elapsed-time-value" id="elapsed-time">None</p>
+               <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAATYAAAE2AQAAAADDx4MEAAABnklEQVR4nO2ZQW6EMAxF7RBpliD1AD0Kc7XejByFG8CyEtGvnDBF03rUWbQlEP9FkMKTxlHG+bFh0DOK7imMyDhdxukyTpdxuozTZZyuSrnAq4hmTxS6eJvoioivOq6FaCEKr++cZtIEhkLiq46Lay704wVbzpQTXyWc1ya5n+If/64z7jlOrINC9yP3QM643+EaAJOcV9sAoJz4KuHo3rYJQ7vk4d7oS1+HOwnH3/tX0Stzpa/DnYsL2TWiXKgaZP+Qga9lxFfbeQUpPfLZlP2jweofdl7tU59fQP3In1ermCv1vD37x1dffiDnAvUpU+TQIjF1SRLLjx38g0SR8dbJUTVFpn70h1vH4TmfH1JwyK0KRDPLuHjJD3+Ydbiz1h9Aqj9kLhUh5ue77Ee7XrKASSp1MZGUM7cXpa/DnbW/G6x/VVR/t59eFpame+q1c+pklfB/qXU/wrWRR2TQTITQTYdYhzutf2CrP7baxPzjn7k5fSxPn86bXH9gmLdyfff4Ku7varL+7gO5Ry++yDhdxukyTpdxuozTVRv3ARMI+jlYUo80AAAAAElFTkSuQmCC" alt="QR Code" class="qr-code">
+               <p class="ticket-details">Серия билета: <span class="ticket-details-bold">QRFPJL2UBL1N</span></p>
+               <p class="ticket-details">Номер билета: <span class="ticket-details-bold">2025031533303</span></p>
+           </div>
+       </body>
+       </html>
+       
